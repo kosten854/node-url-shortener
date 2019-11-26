@@ -1,0 +1,13 @@
+version: "3.7"
+
+# TODO Закрыть все внешние порты.
+
+services:
+  redis:
+    image: redis
+    restart: always
+    volumes:
+      - ./data:/data
+    ports:
+      - 6379:6379
+    command: redis-server --appendonly yes

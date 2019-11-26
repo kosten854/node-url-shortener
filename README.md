@@ -35,6 +35,7 @@ Options:
   --redis-pass  Redis Server password                           [default: false]
   --redis-db    Redis DB index                                      [default: 0]
   -h, --help    Show help                                              [boolean]
+  --hook        Hook url for send info about click                      [string]
 ```
 
 ## Installation on production

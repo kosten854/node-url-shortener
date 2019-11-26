@@ -16,4 +16,6 @@ module.exports = require('yargs')
   .default('redis-db', 0)
   .help('h')
   .alias('h', 'help')
+  .describe('hook', 'Hook url for send info about click')
+  .default('hook', false)
   .argv;

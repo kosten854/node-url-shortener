@@ -10,19 +10,21 @@
   },
   "dependencies": {
     "base58": "^1.0.1",
-    "body-parser": "^1.18.2",
-    "cors": "^2.8.4",
-    "ejs": "^2.5.8",
-    "express": "^4.16.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
     "method-override": "^2.3.10",
-    "morgan": "^1.9.0",
+    "morgan": "^1.9.1",
+    "node-fetch": "^2.6.0",
     "redis": "^2.8.0",
-    "yargs": "^11.0.0"
+    "wretch": "^1.5.5",
+    "yargs": "^11.1.1"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
     "fakeredis": "^1.0.3",
-    "mocha": "^2.4.5",
+    "mocha": "^2.5.3",
     "superagent": "^2.0.0-alpha.3",
     "superagent-mocker": "^0.4.0"
   },
