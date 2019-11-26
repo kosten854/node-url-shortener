@@ -1,13 +1,15 @@
-var express = require('express')
-  , app = express()
-  , path = require('path')
-  , opts = require(path.join(__dirname, 'config', 'opts.js'))
-  , nus = require(path.join(__dirname, 'lib', 'nus.js'))(opts);
+/* eslint-disable no-unused-vars */
+let express = require('express');
+let app = express();
+let path = require('path');
+let opts = require(path.join(__dirname, 'config', 'opts.js'));
+let nus = require(path.join(__dirname, 'lib', 'nus.js'))(opts);
 
 // Gotta Catch 'Em All
 process.addListener('uncaughtException', function (err, stack) {
   console.log('Caught exception: ' + err + '\n' + err.stack);
-  console.log('\u0007'); // Terminal bell
+  console.log('\u0007');
+  // Terminal bell
 });
 
 // Common options

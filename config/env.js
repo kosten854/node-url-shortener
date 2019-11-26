@@ -1,8 +1,8 @@
-var path = require('path')
-  , cors = require('cors')
-  , morgan  = require('morgan')
-  , bodyParser = require('body-parser')
-  , methodOverride = require('method-override');
+let path = require('path');
+let cors = require('cors');
+let morgan  = require('morgan');
+let bodyParser = require('body-parser');
+let methodOverride = require('method-override');
 
 module.exports = function (express, app) {
   __dirname = app.get('__dirname');
@@ -13,7 +13,7 @@ module.exports = function (express, app) {
 
   // Middleware
   app.use(cors());
-  app.use(morgan('dev'))
+  app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   app.use(methodOverride());

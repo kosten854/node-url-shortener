@@ -1,28 +1,28 @@
-var request = require('superagent')
-  , mock = require('superagent-mocker')(request)
-  , expect = require('expect.js')
-  , fakeredis;
+let request = require('superagent');
+let mock = require('superagent-mocker')(request);
+let expect = require('expect.js');
+let fakeredis;
 
-function addDays(n){
-  var t = new Date();
+function addDays(n) {
+  let t = new Date();
   t.setDate(t.getDate() + n);
-  var date = t.getFullYear()+"/"+(((t.getMonth() + 1) < 10 ) ? '0'+(t.getMonth()+1) : (t.getMonth()+1))+"/"+((t.getDate() < 10) ?  '0'+t.getDate() : t.getDate());
+  let date = t.getFullYear() + '/' + (((t.getMonth() + 1) < 10) ? '0' + (t.getMonth() + 1) : (t.getMonth() + 1)) + '/' + ((t.getDate() < 10) ?  '0' + t.getDate() : t.getDate());
   return date;
 }
 
 describe('Test Node Url Shortener without start_date and end_date - Nus', function () {
-  var nus
-    , long_url
-    , short_url
-    , cNew;
+  let nus;
+  let long_url;
+  let short_url;
+  let cNew;
 
-  var dateObject = {};
+  let dateObject = {};
 
-  beforeEach(function() {
-    fakeredis = require('fakeredis').createClient(0, 'localhost', {fast : true});
+  beforeEach(function () {
+    fakeredis = require('fakeredis').createClient(0, 'localhost', { fast: true });
     nus = require('../lib/nus')();
     nus.getModel = function (callback) {
-      var RedisModel = require('../lib/redis-model.js');
+      let RedisModel = require('../lib/redis-model.js');
       callback(null, new RedisModel(null, fakeredis));
     };
     long_url = 'http://example.com';
@@ -55,7 +55,6 @@ describe('Test Node Url Shortener without start_date and end_date - Nus', functi
           'clicks', 1
         ]
       ]).exec(function (err, replies) {
-
         nus.shorten(long_url, dateObject.start_date, dateObject.end_date, cNew, function (err, reply) {
           expect(err).to.be(null);
           expect(reply).to.not.be.empty();
@@ -64,28 +63,25 @@ describe('Test Node Url Shortener without start_date and end_date - Nus', functi
           expect(reply.long_url).to.be(long_url);
           done();
         });
-
       });
     });
   });
 });
 
 
-
-
 describe('Test Node Url Shortener with start_date and end_date - Nus', function () {
-  var nus
-    , long_url
-    , short_url
-    , cNew;
+  let nus;
+  let long_url;
+  let short_url;
+  let cNew;
 
-  var dateObject = {};
+  let dateObject = {};
 
-  beforeEach(function() {
-    fakeredis = require('fakeredis').createClient(0, 'localhost', {fast : true});
+  beforeEach(function () {
+    fakeredis = require('fakeredis').createClient(0, 'localhost', { fast: true });
     nus = require('../lib/nus')();
     nus.getModel = function (callback) {
-      var RedisModel = require('../lib/redis-model.js');
+      let RedisModel = require('../lib/redis-model.js');
       callback(null, new RedisModel(null, fakeredis));
     };
     long_url = 'http://example.com';
@@ -118,7 +114,6 @@ describe('Test Node Url Shortener with start_date and end_date - Nus', function 
           'clicks', 1
         ]
       ]).exec(function (err, replies) {
-
         nus.shorten(long_url, dateObject.start_date, dateObject.end_date, cNew, function (err, reply) {
           expect(err).to.be(null);
           expect(reply).to.not.be.empty();
@@ -127,9 +122,8 @@ describe('Test Node Url Shortener with start_date and end_date - Nus', function 
           expect(reply.long_url).to.be(long_url);
           done();
         });
-
       });
     });
   });
-})
+});
 

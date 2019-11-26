@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 module.exports = function (app, nus) {
-  var opts = app.get('opts')
-    , http = require('http')
-    , api = require('./api.js')(app, nus)
-    , hook = require('../lib/hook.js');
+  let opts = app.get('opts');
+  let http = require('http');
+  let api = require('./api.js')(app, nus);
+  let hook = require('../lib/hook.js');
 
   // api routes
   app.use('/api/v1', api);
@@ -19,7 +20,7 @@ module.exports = function (app, nus) {
         next();
       } else {
         if (opts.hook) {
-          hook(opts.hook, reply).then(_ => console.log('hook'))
+          hook(opts.hook, reply).then(_ => console.log('hook'));
         }
         res.redirect(301, reply.long_url);
       }
@@ -28,7 +29,7 @@ module.exports = function (app, nus) {
 
   // catch 404 and forwarding to error handler
   app.use(function (req, res, next) {
-    var err = new Error('Not Found');
+    let err = new Error('Not Found');
     err.status = 404;
     next(err);
   });

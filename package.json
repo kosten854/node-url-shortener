@@ -22,6 +22,8 @@
     "yargs": "^11.1.1"
   },
   "devDependencies": {
+    "eslint": "^6.7.1",
+    "eslint-config-kasa": "^0.5.0",
     "expect.js": "^0.3.1",
     "fakeredis": "^1.0.3",
     "mocha": "^2.5.3",
@@ -36,6 +38,7 @@
   ],
   "scripts": {
     "start": "node app",
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint app.js lib routes"
   }
 }
