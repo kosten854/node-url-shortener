@@ -7,7 +7,7 @@ services:
     image: redis
     restart: always
     volumes:
-      - ./data:/data
+      - ../data:/data
     ports:
       - 6379:6379
     command: redis-server --appendonly yes
